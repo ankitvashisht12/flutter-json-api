@@ -31,7 +31,24 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
  
- 
+   Future<List<Data>> getAllData() async{
+      var api = "https://jsonplaceholder.typicode.com/photos";
+      var data = await http.get(api);
+
+      var jsonData = jsonDecode(data.body);
+
+      List<Data> listOf = [];
+
+      for(var i in jsonData){
+        Data d = Data(i['id'], i["title"], i["url"], i["thumbnailUrl"]);
+        listOf.add(d);
+      }
+
+      return listOf;
+
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
