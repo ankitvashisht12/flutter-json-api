@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'dart:async';
+import 'model.dart';
 
 void main() => runApp(MyApp());
 
@@ -27,7 +31,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
  
-
+ 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,7 +49,52 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
       ),
+      drawer: Drawer(
+        child: ListView(
+          children: <Widget>[
+            UserAccountsDrawerHeader(
+              accountName: Text("Ankit Vashisht"),
+              accountEmail: Text("ankitvashisht12@gmail.com"),
+              decoration: BoxDecoration(
+                color: Colors.blueAccent
+              ),
+            ),
 
+            ListTile(
+              leading: Icon(Icons.settings),
+              title: Text('Setting'),
+              onTap: (){
+                Navigator.of(context).pop();
+              },
+            ),
+
+            ListTile(
+              leading: Icon(Icons.account_circle),
+              title: Text('Account'),
+              onTap: (){
+                Navigator.of(context).pop();
+              },
+            ),
+
+            Divider(),
+
+            ListTile(
+              title: Text('About'),
+              onTap: (){
+                Navigator.of(context).pop();
+              },
+            ),
+
+            ListTile(
+              title: Text('Help & Feedback'),
+              onTap: (){
+                Navigator.of(context).pop();
+              },
+            ),
+
+          ],
+        ),
+      ),
       
     );
   }
